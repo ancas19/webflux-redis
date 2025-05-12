@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group = 'co.com.ancas'
+version = '1.0-SNAPSHOT'
+
+ext {
+    redissonVersion = '3.43.0'
+    lombokVersion = '1.18.36'
+    junitVersion = '5.11.3'
+    reactorBomVersion = '2024.0.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.redisson:redisson:${redissonVersion}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testImplementation platform("io.projectreactor:reactor-bom:${reactorBomVersion}")
+    testImplementation "io.projectreactor:reactor-test"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}
