@@ -13,7 +13,7 @@ public class RestaurantUtil {
 
     public static List<Restaurant> getAllRestaurants() {
         ObjectMapper objectMapper = new ObjectMapper();
-        InputStream stream = RestaurantUtil.class.getResourceAsStream("restaurants.json");
+        InputStream stream = RestaurantUtil.class.getClassLoader().getResourceAsStream("restaurant.json");
         try {
             return objectMapper.readValue(stream, new TypeReference<List<Restaurant>>() {
             });
